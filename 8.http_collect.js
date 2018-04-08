@@ -14,6 +14,8 @@
  vez que se acaba el stream se dispara un callback con todos los datos:
     response.pipe(bl(function (err, data) {  }))
 
+    The pipe() function reads data from a readable stream as it becomes available and writes it to a destination writable stream.
+
   Recuerda hacer data.toString() para convertir al Buffer de Node a String.
 */
 
@@ -23,7 +25,10 @@ var bl = require('bl');
 
 http.get(urlPath, function(response){
 
-    response.pipe(bl (function (err, data){
+  //Here we're passing a callback to bl, which is basically a function that it will call when it has a stream of data to do something with.
+  // Thus, data is undefined for now... it's just a parameter name that will later be used to pass the text from the GET call for printing.
+
+    response.pipe(bl(function (err, data){  // entube el buffer que se esta construyendo con cada dato recibido
 
       if (err){
         console.log(err)

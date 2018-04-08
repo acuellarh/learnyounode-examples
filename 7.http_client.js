@@ -21,7 +21,7 @@ http.get(urlPath, function (response){
    nos interesan los eventos: "data", "error" y "end". Para escuchar un
    evento, lo enciendes "on". */
 
-          response.setEncoding('utf8')
+          response.setEncoding('utf8') // Pasa el dato de buffer a string
           response.on('data', console.log)
           response.on('error', console.error)
 });

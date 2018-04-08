@@ -1,5 +1,5 @@
 // Programa que recibe strings a partir de la segunda posición del array, los convierte en numeros
-// y luego suma los elementos del array sin imprtar cuantos sean.
+// y luego suma los elementos del array sin importar cuantos sean.
 var l = process.argv.length;
 suma = 0;
   for (i = 2; i < l ; i ++)

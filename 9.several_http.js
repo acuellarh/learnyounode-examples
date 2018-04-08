@@ -1,27 +1,32 @@
 
 const http = require ('http');
-const urlPath = process.argv[2];
 const bl = require('bl');
 const mensaje = [];
 let contador = 0 ;
 
+
+for (var i = 0; i < 3; i++)// Ciclo para ir ejecutando la funcion httpGet, para este caso tres veces
+{
+  httpGet(i)
+}
+
 function httpGet (location)
-//for(var location=0; location < 3; location++)
+
 {
   http.get(process.argv[2 + location], function(response){
 
-    response.pipe(bl (function (err, data){
+    response.pipe(bl (function (err, data){  // entube el buffer que se esta construyendo con cada dato recibido
 
       if (err)
         {
         console.log(err)
         }
 
-        mensaje[location] = data.toString()
-        contador ++
-        // console.log(location)
+        mensaje[location] = data.toString()  // Convierte los datos a un string y los guarda en una posición en el buffer mensaje
+        contador ++                          // contador para controlar cuantas veces se ha ejecutado la función HttpGet, dado que a la 3ra debemos imprimir
+        console.log(location)
 
-        if (contador === 3)
+        if (contador === 3)  // Cuando cumple esta condición llama a la funcion print que esta fuera de la presente función.
           {
           print();
           }
@@ -29,19 +34,12 @@ function httpGet (location)
       );
 
     })
-
 }
 
-          function print ()
+          function print ()// funcion encargada de imprimir
          {
            for(var i=0; i<3; i++)
               {
-                console.log(mensaje[i]);
+                console.log(mensaje[i]);  // Imprime la información almacenada en el buffer mensaje en las posiciones 0,1 y 2. Para eso se utilizó el ciclo for
               }
-          }
-
-
-          for (var i = 0; i < 3; i++)
-          {
-            httpGet(i)
           }
