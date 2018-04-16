@@ -20,7 +20,7 @@ fs.createReadStream(process.argv[3]).pipe(response)
 la posición 3  la  convierte es un stream que representa el archivo de entrada.
 
 Luego se utiliza la opción src.pipe(dst), que sirve para conectar
-un filesystem stream a un -> HTTP response stream */
+un filesystem stream a un --> HTTP response stream */
 
 })
 
